@@ -30,7 +30,7 @@ function loadSampler(onload) {
     files[ns] = ns.replace('#', 's') + '.[mp3|ogg|wav]'; 
   });
   const options = {
-    baseUrl: '/samples/piano/',
+    baseUrl: 'samples/piano/',
     release : 1,
     onload: onload
   }
