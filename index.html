@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Get started with Tone.js</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    
+    <!-- import Tone.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.25/Tone.js"></script>
+    
+    <!-- import the webpage's javascript file -->
+  </head>
+  
+  <body>
+    <h1>Hear2</h1>
+
+    <div id="page-settings">
+      <h3>Settings</h3>
+
+      <div>
+        <h5>Intervals</h5>
+      <label for="settings-int-0" id="settings-int-0-label">0</label><input type="checkbox" id="settings-int-0"><br>
+      <label for="settings-int-1" id="settings-int-1-label">1</label><input type="checkbox" id="settings-int-1"><br>
+      <label for="settings-int-2" id="settings-int-2-label">2</label><input type="checkbox" id="settings-int-2"><br>
+      <label for="settings-int-3" id="settings-int-3-label">3</label><input type="checkbox" id="settings-int-3"><br>
+      <label for="settings-int-4" id="settings-int-4-label">4</label><input type="checkbox" id="settings-int-4"><br>
+      <label for="settings-int-5" id="settings-int-5-label">5</label><input type="checkbox" id="settings-int-5"><br>
+      <label for="settings-int-6" id="settings-int-6-label">6</label><input type="checkbox" id="settings-int-6"><br>
+      <label for="settings-int-7" id="settings-int-7-label">7</label><input type="checkbox" id="settings-int-7"><br>
+      <label for="settings-int-8" id="settings-int-8-label">8</label><input type="checkbox" id="settings-int-8"><br>
+      <label for="settings-int-9" id="settings-int-9-label">9</label><input type="checkbox" id="settings-int-9"><br>
+      <label for="settings-int-10" id="settings-int-10-label">10</label><input type="checkbox" id="settings-int-10"><br>
+      <label for="settings-int-11" id="settings-int-11-label">11</label><input type="checkbox" id="settings-int-11"><br>
+      <label for="settings-int-12" id="settings-int-12-label">12</label><input type="checkbox" id="settings-int-12"><br>
+      </div>
+      <div>
+      <h5>Direction</h5>
+      <input type="radio" name="settings-dir" id="settings-dir-up">Up<br>
+      <input type="radio" name="settings-dir" id="settings-dir-down">Down<br>
+      <input type="radio" name="settings-dir" id="settings-dir-updown">Up/Down<br>  
+      </div>
+
+      <div>
+      <button id="settings-start">Start</button>
+      </div>
+    </div>
+
+    <div id="page-excercise">
+      <h3>Excercise</h3>
+      <div id="sing">
+          <div id="sing-question">
+            <div id="sing-text"></div>
+            <button id="sing-again-button">Again</button>
+            <button id="sing-solution-button">Solution</button>
+            <button id="sing-next">Next</button>
+          </div>
+          <div id="sing-navigation">
+            <button id="nav-settings">Settings</button>
+          </div>
+      </div>  
+    </div>  
+
+    <div id="page-results">
+      <h3>Results</h3>
+    </div>
+
+
+    <script src="/script.js"></script>
+  </body>
+</html>
