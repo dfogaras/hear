@@ -22,7 +22,13 @@
       <h3>Settings</h3>
 
       <div>
-        <h5>Intervals</h5>
+      <h5>Excercise</h5>
+      <input type="radio" name="settings-exercise" id="settings-exercise-sing">Sing<br>
+      <input type="radio" name="settings-exercise" id="settings-exercise-identify">Identify<br>
+      </div>
+
+      <div>
+      <h5>Intervals</h5>
       <label for="settings-int-0" id="settings-int-0-label">0</label><input type="checkbox" id="settings-int-0"><br>
       <label for="settings-int-1" id="settings-int-1-label">1</label><input type="checkbox" id="settings-int-1"><br>
       <label for="settings-int-2" id="settings-int-2-label">2</label><input type="checkbox" id="settings-int-2"><br>
@@ -37,6 +43,7 @@
       <label for="settings-int-11" id="settings-int-11-label">11</label><input type="checkbox" id="settings-int-11"><br>
       <label for="settings-int-12" id="settings-int-12-label">12</label><input type="checkbox" id="settings-int-12"><br>
       </div>
+
       <div>
       <h5>Direction</h5>
       <input type="radio" name="settings-dir" id="settings-dir-up">Up<br>
@@ -47,10 +54,12 @@
       <div>
       <button id="settings-start">Start</button>
       </div>
+
     </div>
 
     <div id="page-excercise">
       <h3>Excercise</h3>
+
       <div id="sing">
           <div id="sing-question">
             <div id="sing-text"></div>
@@ -59,9 +68,21 @@
             <button id="sing-next">Next</button>
           </div>
           <div id="sing-navigation">
-            <button id="nav-settings">Settings</button>
+            <button id="sing-nav-settings">Settings</button>
           </div>
-      </div>  
+      </div>
+
+      <div id="identify">
+        <div id="identify-question">
+          <div id="identify-text"></div>
+          <div id="identify-choices"></div>
+          <button id="identify-again">Again</button>
+          <div id="sing-navigation">
+            <button id="identify-nav-settings">Settings</button>
+          </div>
+        </div>
+      </div>
+    
     </div>  
 
     <div id="page-results">

@@ -5,6 +5,7 @@ const INTERVALS = ['P1', 'm2', 'M2', 'm3', 'M3', 'P4', 'd5', 'P5', 'm6', 'M6', '
 const NOTES = noteStrs();
 let SAMPLER = null;
 let SETTINGS = {
+  excercise: 'sing', // identify
   intervals: [3, 4],
   direction: '+', // '-', '+-'
 }
@@ -78,6 +79,8 @@ function hide(elId) {
 
 PAGE_IDS = ["page-settings", "page-excercise", "page-results"]
 
+EXCERCISE_IDS = ["sing", "identify"]
+
 function showPage(pageElId) {
   console.log('Displaying ' + pageElId);
   PAGE_IDS.forEach(function(elId){ hide(elId);});
@@ -102,27 +105,65 @@ class SingExcercise {
     document.getElementById('sing-again-button').onclick =function(){ playNum(self.base); };
     document.getElementById('sing-solution-button').onclick =function(){ playNum(self.base + self.interval); };
     document.getElementById('sing-next').onclick =next;
-    document.getElementById('nav-settings').onclick =showSettings;
+    document.getElementById('sing-nav-settings').onclick =showSettings;
     show('sing-question');
     show('sing');
     playNum(self.base);
   }
 }
 
-function singExcercise() {
+function toOptions() {
   const d = SETTINGS.direction;
   const i = SETTINGS.intervals;
-  const options = {
+  return {
       intervals: i.flatMap(e => d == '+' ? e : (d == '-' ? -e : [ e, -e])),
       baseLow: noteNum('C2'),
       baseHigh: noteNum('C5'),
   };
-  new SingExcercise(options).play(next=singExcercise);
+}
+
+function singExcercise() {
+  show('sing');
+  new SingExcercise(toOptions()).play(next=singExcercise);
+}
+
+function identifyExcercise() {
+  show('identify');
+  const options = toOptions();
+  const interval = randElement(options.intervals);
+  const base = randInRange(options.baseLow, options.baseHigh);
+  let msg = 'Which interval it is?'
+  document.getElementById('identify-text').innerHTML = msg;
+  const playQuestion = function() {
+    playNum(base);
+    playNum(base + interval);
+  }
+  playQuestion();
+  const choices = document.getElementById('identify-choices');
+  while (choices.firstChild) {
+    choices.removeChild(choices.firstChild);
+  }
+  let good = function() { identifyExcercise(); }
+  let bad = function() { playQuestion(); }
+  options.intervals.forEach(function(i) {
+    const btn = document.createElement("button");
+    btn.innerHTML = intervalStr(i);
+    btn.onclick = i === interval ? good : bad;
+    choices.appendChild(btn);
+  });
+  document.getElementById('identify-again').onclick = playQuestion;
+  document.getElementById('identify-nav-settings').onclick =showSettings;
 }
 
 function startExcercise() {
+  EXCERCISE_IDS.forEach(function(el) { hide(el); })
   showPage('page-excercise');
-  singExcercise();
+  if (SETTINGS.excercise === 'sing') {
+    singExcercise();
+  }
+  if (SETTINGS.excercise === 'identify') {
+    identifyExcercise();
+  }
 }
 
 function showSettings() {
@@ -164,6 +205,16 @@ function directionSettings() {
   updown.onclick = function() { SETTINGS.direction = '+-'; };
   updown.checked = SETTINGS.direction === '+-';
 }
+
+function directionSettings() {
+  const sing = document.getElementById('settings-exercise-sing');
+  const ident = document.getElementById('settings-exercise-identify');
+  sing.onclick = function() { SETTINGS.excercise = 'sing'; };
+  sing.checked = SETTINGS.excercise === 'sing';
+  ident.onclick = function() { SETTINGS.excercise = 'identify'; };
+  ident.checked = SETTINGS.direction === 'identify';
+}
+
 
 function main() {
   showSettings();
